@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Sansita } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
-
-const sansita = Sansita({
-   weight: ["400", "700", "800", "900"],
-   subsets: ["latin-ext"],
-});
+import GoogleAnalytics from "@/libs/googleAn";
 
 export const metadata: Metadata = {
-   title: "MI MARINERA.COM",
+   title: "Calendario MiMarinera.com",
    description: "Tu marinera en un solo lugar",
 };
 
@@ -20,9 +14,10 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="es">
+         <GoogleAnalytics />
          <head>
          </head>
-         <body className={`${sansita.className} `}>{children}</body>
+         <body className='bg-white'>{children}</body>
       </html>
    );
 }

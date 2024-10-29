@@ -1,0 +1,24 @@
+.bb-mmc{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid #45204b;
+    user-select: none;
+    color: #45204b;
+    /* background-color: #e7294f !important; */
+}
+.bb-mmc-n{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid white;
+    color: rgb(156 163 175);
+}
+
+.bb-sor{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid #ff914d;
+    color: #ff914d;
+}
+.bb-sor-n{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid white;
+    user-select: none;
+    color: rgb(156 163 175);
+}

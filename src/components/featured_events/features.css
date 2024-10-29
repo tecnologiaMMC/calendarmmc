@@ -1,0 +1,88 @@
+/* .desktop- {
+   display: block;
+}
+.movil- {
+   display: none;
+}
+.customH {
+   max-height: 400px;
+   min-height: 270px;
+} */
+
+.publi-textos {
+   top: 56%;
+   display: flex;
+   flex-direction: column;
+   align-items: start;
+   gap: 8px;
+   margin-left: 10%;
+   
+}
+
+.custom-text-outline {
+   color: #45204b; /* Tailwind's purple-500 color */
+   line-height: 1;
+   font-weight: 600;
+   font-size: 25px;
+   margin-left: 10%;
+   text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff,
+      2px 2px 0 #ffffff;
+}
+/* src/styles.css */
+.text-outline {
+   font-size: 16px;
+   text-shadow: 0 1px 0px #45204b, 1px 0 0px #45204b, 1px 2px 1px #45204b,
+      2px 1px 1px #45204b, 2px 3px 2px #45204b, 3px 2px 2px #45204b,
+      3px 4px 2px #45204b, 4px 3px 3px #45204b, 4px 5px 3px #45204b,
+      5px 4px 2px #45204b;
+   color: #fff;
+   line-height: 1;
+}
+
+
+/* @media screen and (max-width: 550px) {
+   .desktop- {
+      display: none;
+   }
+   .movil- {
+      display: block;
+   }
+} */
+
+/* @media screen and (max-width: 520px) {
+   .customH {
+      max-height: 330px;
+   }
+} */
+
+@media screen and (max-width: 450px) {
+   
+   .publi-textos {
+      margin-left: 3%;
+   }
+   .custom-text-outline {
+      margin-left: 3%;
+      font-size: 16px;
+      text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
+         1px 1px 0 #ffffff;
+   }
+   .text-outline {
+      font-size: 14px;
+   }
+
+   /* .customH {
+      max-height: 310px;
+   } */
+}
+
+
+
+
+/* @media screen and (max-width: 380px) {
+   .img-movil {
+      max-height: 297px;
+   }
+   .customH {
+      max-height: 300px;
+   }
+} */

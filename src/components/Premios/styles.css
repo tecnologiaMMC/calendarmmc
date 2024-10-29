@@ -1,0 +1,51 @@
+.prem .swiper-button-next,
+.swiper-button-prev {
+   color: #45204b;
+}
+
+
+
+.prem .swiper-pagination-bullet {
+   width: 14px;
+   height: 14px;
+   background-color: #45204b;
+}
+
+.button_buy-s{
+   margin-top: 20px;
+   background-color: #e7294f;
+   padding: 6px 0px;
+   color: white;
+   width: 200px;
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 24px;
+   user-select: none;
+   text-align: center;
+}
+.button_buy-s:hover{
+   background-color: #dc0530;
+}
+
+.prem .swiper {
+   width: 100%;
+   height: 100%;
+   margin-top: 0;
+ }
+.prem .swiperslideprem{
+   text-align: center;
+   font-size: 18px;
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   padding: 0 10px;
+}
+.prem .swiper-slide-next{
+justify-content: start;
+}
+@media screen and (max-width: 640px) {
+   .prem .swiperslideprem{
+      justify-content: center !important;
+   }
+}
+ 

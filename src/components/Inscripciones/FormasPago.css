@@ -1,0 +1,71 @@
+.contenFormasPago{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 80px;
+    row-gap: 30px;
+}
+.contenListaMod{
+    width: 35%;
+    min-width: 270px;
+    text-align: start;
+    background-color: #ede8e8;
+    padding: 8px 20px;
+    border-radius: 8px;
+
+}
+.contenListaMod ul{
+    padding-left: 20px;
+}
+.contenListaMod  h2{
+    color: #492558;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.contenListaMod li{
+    display: flex;
+    margin-bottom: 8px;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.contenListaMod b{
+    width: 200px;
+    color: #492558;
+    font-weight: 100;
+}
+.contenListaMod li p{
+    text-align: end;
+    width: 50px;
+}
+
+.contenInfoPago{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    min-width:280px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: #ede8e8;
+}
+.contenInfoPago h2{
+    color: #492558;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contenInfoPago div{
+    padding-left: 15px;
+}
+
+
+@media screen and (max-width: 750px) {  
+
+    .contenListaMod{
+        width: 90%;
+    }
+    .contenInfoPago{
+    width: 90%;
+    }
+}
