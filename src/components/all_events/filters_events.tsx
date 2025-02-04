@@ -7,7 +7,6 @@ import { TextField } from "@mui/material";
 import BasicPopover from "./fiter_date";
 import Link from "next/link";
 import { styled } from "@mui/material";
-import { Sansita } from "next/font/google";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import dayjs, { Dayjs } from "dayjs";
@@ -18,10 +17,7 @@ import PopoverDates from "./pop_over_dates";
 
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
-const sansita = Sansita({
-   weight: ["400", "700", "800", "900"],
-   subsets: ["latin-ext"],
-});
+
 
 const style_filter_select = {
    placeholder: (provided: any) => ({
@@ -73,6 +69,10 @@ const typesEvents = [
       cod_tipo: "6",
       nombre: "Sorteos",
    },
+   {
+      cod_tipo: "7",
+      nombre: "Charlas y capacitaciones",
+   },
 ];
 
 const FilterEvents: React.FC<MyComponentProps> = ({
@@ -119,18 +119,18 @@ const FilterEvents: React.FC<MyComponentProps> = ({
       changeTexto("Fecha");
    };
 
-   useEffect(() => {
-      if (localStorage.getItem("userDepartment")) {
-         const dep = sites.departamentos;
-         const userDepartament = localStorage.getItem("userDepartment");
-         let [busqueda] = dep.filter(
-            (d) => d.name.toLowerCase() === userDepartament?.toLowerCase()
-         );
-         if(busqueda){
-            setCodDepartament(busqueda.id)
-         }
-      }
-   }, []);
+   // useEffect(() => {
+   //    if (localStorage.getItem("userDepartment")) {
+   //       const dep = sites.departamentos;
+   //       const userDepartament = localStorage.getItem("userDepartment");
+   //       let [busqueda] = dep.filter(
+   //          (d) => d.name.toLowerCase() === userDepartament?.toLowerCase()
+   //       );
+   //       if(busqueda){
+   //          setCodDepartament(busqueda.id)
+   //       }
+   //    }
+   // }, []);
 
    useEffect(() => {
       let eventosFilter = [...eventsBackup];
@@ -290,7 +290,7 @@ const FilterEvents: React.FC<MyComponentProps> = ({
                         },
                         height: "38px",
                         textAlign: "center",
-                        fontFamily: sansita.style.fontFamily,
+                        // fontFamily: sansita.style.fontFamily,
                         marginTop: "-2px",
                      },
                      "& .MuiOutlinedInput-root": {
@@ -314,10 +314,10 @@ const FilterEvents: React.FC<MyComponentProps> = ({
                />
             </div>
             <div className="bg-white flex justify-center items-center outline outline-1 outline-gray-400 rounded-[3px] h-[36px] mt-[1px] relative">
-               <PopoverDates
+               {/* <PopoverDates
                   setSelectedRange={setSelectedRange}
                   selectedRange={selectedRange}
-               />
+               /> */}
             </div>
          </div>
       </div>

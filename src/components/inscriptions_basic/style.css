@@ -1,0 +1,121 @@
+.conten_reinas {
+   width: 90%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 20px;
+}
+.conten_reinas section {
+   min-width: 280px;
+   display: flex;
+   flex-direction: column;
+   text-align: start;
+   row-gap: 20px;
+}
+.conten_pagos {
+   width: 35%;
+}
+.conten_form {
+   width: 60%;
+}
+.conten_inputs_reinas {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   gap: 5px;
+}
+.inpReinas {
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+   background-color: aqua;
+   justify-content: center;
+}
+
+.contenEntradas {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 4px;
+}
+.contenEntradasTit {
+   font-size: 20px;
+   line-height: 1;
+}
+.color-subt {
+   color: #45204e;
+}
+
+.compEntradas {
+   display: flex;
+   gap: 8px;
+   align-items: center;
+}
+.compEntradas p {
+   font-size: 25px;
+}
+
+.compEntradas i:first-child {
+   border-radius: 50%;
+   background-color: grey;
+   color: white;
+   height: 30px;
+   width: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+}
+.compEntradas i:last-child {
+   border-radius: 50%;
+   background-color: #45204e;
+   height: 30px;
+   width: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   cursor: pointer;
+}
+
+.contenImagVoucher {
+   width: 100%;
+   min-height: 150px;
+   align-self: center;
+}
+.buttonBuy {
+   background-color: #45204e;
+   color: white;
+   line-height: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   height: 40px;
+   width: 200px;
+   font-size: 24px;
+   align-self: center;
+   border-radius: 8px;
+   cursor: pointer;
+}
+.buttonBuy p {
+   margin-top: -5px;
+}
+
+@media screen and (max-width: 750px) {
+   .conten_reinas {
+      justify-content: center;
+      padding: 0;
+   }
+   .conten_pagos {
+      width: 100%;
+   }
+   .conten_form {
+      width: 100%;
+      margin-top: 25px;
+   }
+   .contenImagVoucher {
+      min-height: 100px;
+   }
+}

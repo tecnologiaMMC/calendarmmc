@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'], // Configura Roboto como fuente principal
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -22,9 +25,16 @@ const config: Config = {
         'concourse':'#45204b',
         'coronation':'#F0B23F',
         'sorteo':'#ff914d',
-        'mmc-g':'#989894'
+        'mmc-g':'#989894',
+        'charla':'#4570d3'
       },
       
+    },
+  },
+  variants: {
+    extend: {
+      textColor: ['hover', 'focus'], // Asegúrate de incluirlo si usas 'hover' o 'focus'.
+      transitionProperty: ['text-color'], // Habilita transiciones para `text-color`.
     },
   },
   plugins: [],

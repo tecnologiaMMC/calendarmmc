@@ -15,12 +15,13 @@ const CookieConsent = () => {
    const handleAccept = () => {
       localStorage.setItem("cookiesAccepted", "true");
       setShowAlert(false);
-
+      console.log('antes del naviagtor')
       if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
 
             // Guardar la ubicación en localStorage
+            console.log(position.coords)
             localStorage.setItem(
                "userLocation",
                JSON.stringify({ latitude, longitude })

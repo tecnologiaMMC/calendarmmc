@@ -1,5 +1,5 @@
 
-.swiper {
+/* .swiper {
    width: 100%;
    height: 100%;
    margin-top: 70px;
@@ -12,39 +12,38 @@
    display: flex;
    justify-content: center;
    align-items: center;
-}
+} */
 
-.swiper-slide img {
+#swiperMain img{
    width: 100%;
    height: 100%;
    object-fit: cover;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-   color: white ;
+#swiperMain .swiper-button-next,
+#swiperMain .swiper-button-prev {
+   color: white; 
 }
-.swiper-pagination-bullet {
+
+#swiperMain .swiper-pagination-bullet {
    background: rgb(225, 225, 225);
    width: 13px;
    height: 13px;
 }
-.swiper-pagination-bullet-active {
+#swiperMain .swiper-pagination-bullet-active {
    background: white;
    width: 14px;
    height: 14px;
 }
 
+/* #swiperMain .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+   height: 12px;
+} */
+
 @media screen and (max-width: 640px) {
-   .swiper {
-      margin-top: 80px;
-   }
-   .swiper-pagination-bullet {
-      width: 12px;
-      height: 12px;
-   }
-   .swiper-button-next::after,
-   .swiper-button-prev::after {
+
+   #swiperMain .swiper-button-next::after,
+   #swiperMain .swiper-button-prev::after {
       font-size: 30px;
    }
 }

@@ -11,7 +11,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import { useQuill } from "react-quilljs";
 import {
    accordionSx,
    formDefault,
@@ -29,15 +29,18 @@ import ModalRegister from "../modal_register/modal_register";
 import apiClient from "@/services/axiosInstance";
 import ModalCategory from "../modal_category/modal_category";
 import { FaUserPlus } from "react-icons/fa6";
+import "./style.css";
 
 const customTheme = (theme: any) => ({
    ...theme,
    borderRadius: 15,
 });
 
-const editFomDefault = (cod_evento: number) => {
+const editFomDefault = (cod_evento: number,num_base:number) => {
    let copy = { ...formDefault };
    copy.codConcurso = cod_evento;
+   copy.voucher=cod_evento===645?"https://firebasestorage.googleapis.com/v0/b/react-firebase-images-bca8f.appspot.com/o/fddfb448-71d9-40ea-a250-128f14456460?alt=media&token=4e76c9c9-99b1-4651-9902-f21077bae22b&fbclid=IwY2xjawHk5YlleHRuA2FlbQIxMAABHWmhTepEvUCS3DsRbNY30JkuVay6FxsoXdtntxFzDidknpHuxPDsbU66qA_aem_kLVD1Q72it6bKPyyFlQ5QQ":"";
+   copy.num_base=num_base
    return copy;
 };
 
@@ -45,10 +48,12 @@ const Registrations = ({
    categories,
    modalities,
    event,
+   mensaje_cierre,
 }: {
    categories: Category[];
    modalities: Modality[];
    event: DetailEvent;
+   mensaje_cierre: any;
 }) => {
    const refselectCategories = React.useRef<SelectInstance | null>(null);
    const refselectModalities = React.useRef<SelectInstance | null>(null);
@@ -62,7 +67,7 @@ const Registrations = ({
    const [categoria, setCategoria] = useState<Category>();
 
    const [form, setForm] = useState<FormRegistro>(
-      editFomDefault(event.cod_concurso)
+      editFomDefault(event.cod_concurso,event.num_base)
    );
 
    const [nombre, setNombre] = useState<string>();
@@ -78,6 +83,18 @@ const Registrations = ({
    const [expandedPanels, setExpandedPanels] = useState<any[]>([]);
    const [checkBox, setCheckBox] = useState<boolean>(false);
    const [hidenForm, setHidenForm] = useState(false);
+   const { quill: quill1, quillRef: quillRef1 } = useQuill({
+      readOnly: true,
+      modules: {
+         toolbar: false,
+      },
+   });
+
+   useEffect(() => {
+      if (quill1) {
+         quill1.setContents(mensaje_cierre);
+      }
+   }, [quill1, mensaje_cierre]);
 
    const handleChange = (panel: any) => (event: any, isExpanded: any) => {
       setExpandedPanels((prevState) => {
@@ -109,7 +126,7 @@ const Registrations = ({
          setSelectCategories(categories);
       }
       let copiForm = { ...form };
-      setForm(editFomDefault(event.cod_concurso));
+      setForm(editFomDefault(event.cod_concurso,event.num_base));
       setErrors(validationForm(copiForm));
    }, [modalit]);
 
@@ -153,7 +170,7 @@ const Registrations = ({
       refselectCategories.current?.clearValue();
       setModalit(undefined);
       setCategoria(undefined);
-      setForm(editFomDefault(event.cod_concurso));
+      setForm(editFomDefault(event.cod_concurso,event.num_base));
 
       setExpandedPanels([]);
       setFile(undefined);
@@ -167,7 +184,9 @@ const Registrations = ({
    };
    const signUpParticipation = async () => {
       if (!checkBox) return;
-      if (!file) return;
+      if(form.codConcurso!=645){
+         if (!file) return;
+      }
       if (categoria === undefined) return;
       if (modalit === undefined) return;
       let copiForm = { ...form };
@@ -182,8 +201,10 @@ const Registrations = ({
 
       try {
          setLoader(true);
+         if(form.codConcurso!=645){
          let urlResult = await uploadFile(file);
          copiForm.voucher = urlResult;
+         }
          copiForm.codModalidad = modalit.cod_modalidad;
          copiForm.nombreMod = modalit.nombre_mod;
          copiForm.codCategoria = categoria.cod_categoria;
@@ -346,7 +367,8 @@ const Registrations = ({
                         </AccordionDetails>
                      </Accordion>
                   </section>
-                  <section className=" flex flex-col">
+
+                  {form.codConcurso!=645&&<section className=" flex flex-col">
                      <Accordion
                         sx={accordionSx}
                         expanded={expandedPanels.includes("panel3")}
@@ -379,7 +401,7 @@ const Registrations = ({
                            *Adjunte la imagen del voucher
                         </p>
                      )}
-                  </section>
+                  </section>}
 
                   <section className="flex flex-row items-center  text-p-mmc">
                      <Checkbox
@@ -406,12 +428,8 @@ const Registrations = ({
          )}
          {hidenForm && (
             <>
-               <section className="text-s-mmc md:mx-32">
-                  <h2 className="text-[16px] sm:text-[30px] text-center">
-                     {event.cod_concurso == 129
-                        ? "Las inscripciones virtuales han concluido. Podrás inscribirte de manera presencial en el coliseo a partir de las 9:00 a.m."
-                        : "Las inscripciones virtuales han concluido."}
-                  </h2>
+               <section className="text-s-mmc md:mx-32" id="text_cierre">
+                  <div ref={quillRef1}></div>
                </section>
             </>
          )}

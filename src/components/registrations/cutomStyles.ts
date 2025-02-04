@@ -87,6 +87,7 @@ export const formDefault = {
    correo: "",
    lugar: "",
    nombreCon: "",
+   num_base: 0,
 };
 
 export const validationForm = (form: FormRegistro) => {

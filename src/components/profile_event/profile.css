@@ -22,3 +22,16 @@
     user-select: none;
     color: rgb(156 163 175);
 }
+
+/* #4570d3 */
+.bb-charla{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid #4570d3;
+    color: #4570d3;
+}
+.bb-charla-n{
+    transition: border-bottom .5s;
+    border-bottom: 1.5px solid white;
+    user-select: none;
+    color: rgb(156 163 175);
+}

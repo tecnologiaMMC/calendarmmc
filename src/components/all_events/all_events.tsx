@@ -20,7 +20,7 @@ const CustomPagination = styled(Pagination)(({ theme }) => ({
       },
    },
    "& .Mui-selected": {
-      backgroundColor: "#45204b !important", 
+      backgroundColor: "#45204b !important",
       color: "white", // Cambiar el color del texto si es necesario
       "&:hover": {
          backgroundColor: "#c22343", // Cambia el color según tus necesidades
@@ -39,7 +39,7 @@ const AllEvents: React.FC<EventListProps> = ({ events }) => {
    const itemsPerPage = 16;
    const lastIndex = currentPage * itemsPerPage;
    const firstIndex = lastIndex - itemsPerPage;
-   const currentItems = eventsShow.slice(firstIndex, lastIndex);
+   const currentItems = events.slice(firstIndex, lastIndex);
 
    const handlePageChange = (e: any, value: any) => {
       setCurrentPage(value);
@@ -47,8 +47,7 @@ const AllEvents: React.FC<EventListProps> = ({ events }) => {
 
    return (
       <div className="w-full flex flex-col items-center justify-start  max-w-[1400px] ">
-         
-         <FilterEvents setEventsShow={setEventsShow} eventsShow={eventsShow} eventsBackup={eventsBackup} setCurrentPage={setCurrentPage}/>
+         {/* <FilterEvents setEventsShow={setEventsShow} eventsShow={eventsShow} eventsBackup={eventsBackup} setCurrentPage={setCurrentPage}/> */}
 
          <div className="w-[90%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 min-h-[400px]">
             {currentItems.map((e, index) => (
@@ -57,7 +56,7 @@ const AllEvents: React.FC<EventListProps> = ({ events }) => {
          </div>
          <div className="m-8">
             <CustomPagination
-               count={Math.ceil(eventsShow.length / itemsPerPage)}
+               count={Math.ceil(events.length / itemsPerPage)}
                page={currentPage}
                onChange={handlePageChange}
                color="primary"

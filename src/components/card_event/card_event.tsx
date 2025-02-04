@@ -12,16 +12,20 @@ import { FaLocationDot, FaRegCalendar, FaRegClock } from "react-icons/fa6";
 import { getNameTypeEvent } from "../profile_event/profile_event";
 import clsx from "clsx";
 
+
+export const nameTypeEvent = (cod:number): string => {
+   let filtro: TypeEvent[] = typesEvents.filter(
+      (t) => t.cod_type == cod.toString()
+   );
+   if (filtro.length == 0) return "tipo no encontrado";
+   return filtro[0].name;
+};
+
 export default function CardEvent({ event }: { event: Event }) {
    const router = useRouter();
 
-   const nameEvent = (): string => {
-      let filtro: TypeEvent[] = typesEvents.filter(
-         (t) => t.cod_type == event.tipos_evento_cod_tipo.toString()
-      );
-      if (filtro.length == 0) return "tipo no encontrado";
-      return filtro[0].name;
-   };
+
+   
    const handleTouchStart = (e: any) => {
       e.currentTarget.style.opacity = "0.9"; // Aplica la opacidad al tocar
    };
@@ -31,7 +35,7 @@ export default function CardEvent({ event }: { event: Event }) {
    };
    return (
       <Link
-         href={`/calendario/${encodeURIComponent(nameEvent())}/${event.slug}`}
+         href={`/calendario/${encodeURIComponent(nameTypeEvent(event.tipos_evento_cod_tipo))}/${event.slug}`}
       >
          <div className="relative flex flex-col rounded-[5px]  shadow overflow-hidden cursor-pointer ">
             <img src={event.banner_con} alt="" />
@@ -45,6 +49,7 @@ export default function CardEvent({ event }: { event: Event }) {
                         "bg-coronation": event.tipos_evento_cod_tipo === 3,
                         "bg-s-mmc ": event.tipos_evento_cod_tipo === 4,
                         "bg-sorteo": event.tipos_evento_cod_tipo === 6,
+                        "bg-charla": event.tipos_evento_cod_tipo === 7,
                      },
                      "text-white text-center text-[14px] sm:text-[17px] h-[25px]  flex items-center justify-center"
                   )}
@@ -93,24 +98,6 @@ export default function CardEvent({ event }: { event: Event }) {
                         {format_hour(event.fecha)}
                      </p>
                   </div>
-
-                  {/* <div className="flex items-center gap-[5px] text-p-mmc">
-                     <div>
-                        <FaRegCalendar />
-                     </div>
-                     <p className="text-[13.5px] md:text-[15.5px] text-start  text-gray-400 truncate">
-                        {formatoFecha(event.fecha)}{" "}
-                        {event.hora && `y ${formatoFecha(event.hora)}`}
-                     </p>
-                  </div>
-                  <div className="flex items-center gap-[5px] text-p-mmc">
-                     <div>
-                        <FaRegClock />
-                     </div>
-                     <p className="text-[13.5px] md:text-[15.5px] text-start  text-gray-400">
-                        {format_hour(event.fecha)}
-                     </p>
-                  </div> */}
                </section>
             </div>
             <div
@@ -123,6 +110,7 @@ export default function CardEvent({ event }: { event: Event }) {
                      "hover:bg-coronation": event.tipos_evento_cod_tipo === 3,
                      "hover:bg-s-mmc ": event.tipos_evento_cod_tipo === 4,
                      "hover:bg-sorteo": event.tipos_evento_cod_tipo === 6,
+                     "hover:bg-charla": event.tipos_evento_cod_tipo === 7,
                   },
                   " w-full h-full absolute opacity-0 hover:opacity-90 flex items-center justify-center transition-opacity duration-300"
                )}

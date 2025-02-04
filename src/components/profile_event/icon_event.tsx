@@ -7,6 +7,7 @@ import {
    FaGift,
    FaSpinner
 } from "react-icons/fa6";
+import { GiTeacher } from "react-icons/gi";
 
 const getIconComponent = (cod_type_event: number) => {
    switch (cod_type_event) {
@@ -20,6 +21,8 @@ const getIconComponent = (cod_type_event: number) => {
          return FaDrum;
       case 6:
          return FaGift;
+      case 7:
+         return GiTeacher;
       default:
          return FaSpinner; // Puedes retornar un ícono por defecto aquí si lo deseas
    }
@@ -42,6 +45,8 @@ export default function IconEvent({
                "bg-coronation": cod_type_event === 3,
                "bg-s-mmc": cod_type_event === 4,
                "bg-sorteo": cod_type_event === 6,
+               "bg-charla": cod_type_event === 7,
+
             },
             "absolute  top-[-50px] w-[100px] h-[100px] text-[50px] lg:top-[-60px]  lg:w-[120px] lg:h-[120px]  rounded-full flex justify-center items-center outline outline-[5px] outline-white lg:text-[70px]"
          )}

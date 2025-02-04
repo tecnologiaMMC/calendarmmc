@@ -1,0 +1,16 @@
+.buton_register_b{
+    background-color: #e7294f;
+    text-align: center;
+    border-radius: 8px;
+    padding: 6px 0;
+}
+.buton_into_b{
+    text-align: center;
+    border-radius: 8px;
+    padding: 4px 0px;
+    outline: 2px solid #e7294f;
+}
+
+.buton_registe_b:hover{
+    background-color: #e0163f;
+}

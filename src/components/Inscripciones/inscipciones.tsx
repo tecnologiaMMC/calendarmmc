@@ -59,6 +59,7 @@ const Inscripciones = ({
                   categories={categories}
                   modalities={modalities}
                   event={event}
+                  mensaje_cierre={bases?.mensaje_cierre}
                />
             )}
             {tab == 3 && (

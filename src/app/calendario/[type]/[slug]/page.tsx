@@ -15,6 +15,9 @@ import { useQuill } from "react-quilljs";
 import BasesForEvent from "@/components/bases_for_event/bases_for_event";
 import FooterMmc from "@/components/Footer/footer";
 import { ordenarPorLetraInicial } from "@/utils/sort_modalities_for_names";
+import MenuBasic from "@/components/menu_basic/menu_basic";
+import InscriptionsBasic from "@/components/inscriptions_basic/inscriptions_basic";
+import MenuDetail from "@/components/menu_details/menu_details";
 
 export default function Evento() {
    const { type, slug } = useParams();
@@ -25,11 +28,18 @@ export default function Evento() {
    const [tabSelect, setTabSelect] = useState<number>(1);
    const [bases, setBases] = useState<Bases>();
 
+   const [events, setEvents] = useState<Event[]>();
+   const [eventsBack, setEventsBack] = useState<Event[]>();
+   const [showFilter, setShowFilter] = useState(false);
+
    useEffect(() => {
       const getData = async (sl: string) => {
          const response = await apiClient.get(
             `/userpar/data-event-datails/${slug}`
          );
+         const responseEvents = await apiClient.get("/userpar/data_for_cards");
+         setEvents(responseEvents.data);
+         setEventsBack(responseEvents.data);
          if (
             response.data[0].bases !== null &&
             Object.keys(response.data[0].bases).length > 0
@@ -42,7 +52,7 @@ export default function Evento() {
          }
          setEvent(response.data[0]);
          if (response.data.length > 1) {
-            let filtro=response.data[1].sort(ordenarPorLetraInicial);
+            let filtro = response.data[1].sort(ordenarPorLetraInicial);
             setModalities(filtro);
             setCategories(response.data[2]);
          }
@@ -63,6 +73,7 @@ export default function Evento() {
          };
          try {
             const data = await apiClient.post(urlContador, cuerpo);
+            await apiClient.post("/userpar/visita-por-evento",{cod_evento:event.cod_concurso});
             setCont(sumaVistas);
          } catch (error) {
             console.log(error);
@@ -81,13 +92,20 @@ export default function Evento() {
    };
    return (
       <div className="flex flex-col bg-white items-center">
-         <Menu />
+         <MenuDetail
+            events={events}
+            setEvents={setEvents}
+            eventsBack={eventsBack}
+            setShowFilter={setShowFilter}
+            showFilter={showFilter}
+         />
          {
             <ProfileEvent
                event={event}
                cont={cont}
                changeTab={changeTab}
                tabSelect={tabSelect}
+               showFilter={showFilter}
             />
          }
 
@@ -112,6 +130,9 @@ export default function Evento() {
                />
             )}
             {event && tabSelect == 6 && <Premios />}
+            {event && tabSelect == 20 && (
+               <InscriptionsBasic cod_evento={event.cod_concurso} />
+            )}
          </section>
          <FooterMmc />
       </div>

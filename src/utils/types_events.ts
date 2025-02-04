@@ -21,6 +21,10 @@ const typesEvents:TypeEvent[] = [
       cod_type: "6",
       name: "sorteos",
    },
+   {
+      cod_type: "7",
+      name: "charlas-y-capacitaciones",
+   },
  ];
 
  export default typesEvents

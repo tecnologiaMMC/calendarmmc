@@ -7,12 +7,6 @@ const sansita = Sansita({
    weight: ["400", "700", "800", "900"],
    subsets: ["latin-ext"],
 });
-// coronacion
-// concurso/
-// ensayo-con-banda
-// celebraciones
-// sorteos
-//
 
 const tipodeEvento = (tipo: string) => {
    if (tipo == "concurso") return "Concurso";
@@ -20,6 +14,7 @@ const tipodeEvento = (tipo: string) => {
    if (tipo == "ensayo-con-banda") return "Ensayo con banda";
    if (tipo == "celebraciones") return "Celebraciones";
    if (tipo == "sorteos") return "Sorteo";
+   if (tipo == "charlas-y-capacitaciones") return "Charlas y capacitaciones";
    else {
       return "dont exist";
    }
@@ -55,7 +50,7 @@ export default function RootLayout({
          <GoogleAnalytics />
          <head>
          </head>
-         <body className={`${sansita.className} bg-white`}>{children}</body>
+         <body className={sansita.className}>{children}</body>
       </html>
    );
 }

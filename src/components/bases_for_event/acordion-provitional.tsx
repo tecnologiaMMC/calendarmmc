@@ -3,9 +3,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface Props{
     children:JSX.Element,
+    title:string
 }
 
-function AcordionProvitional({children}:Props) {
+function AccordionCustomize({children,title}:Props) {
    return (
       <Accordion>
          <AccordionSummary
@@ -14,7 +15,7 @@ function AcordionProvitional({children}:Props) {
             expandIcon={<ExpandMoreIcon />}
          >
             <p className="text-p-mmc text-[22px]">
-                     Modalidades y restricciones
+                     {title}
                   </p>
          </AccordionSummary>
          <AccordionDetails>
@@ -23,4 +24,4 @@ function AcordionProvitional({children}:Props) {
       </Accordion>
    );
 }
-export default AcordionProvitional;
+export default AccordionCustomize;

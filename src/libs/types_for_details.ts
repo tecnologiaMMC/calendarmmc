@@ -27,7 +27,9 @@ interface Bases {
    desarrollo: any;
    calificacion: any;
    premios:any;
-   metodo_pago:any
+   metodo_pago:any;
+   mod_restriciones:any;
+   mensaje_cierre:any;
 }
 
 interface DetailEvent {
@@ -52,6 +54,7 @@ interface DetailEvent {
    slug: string;
    telefono: string;
    tipos_evento_cod_tipo: number;
+   num_base:number;
 }
 
 interface FormRegistro {
@@ -88,4 +91,5 @@ interface FormRegistro {
    correo: string;
    lugar: string;
    nombreCon: string;
+   num_base:number;
 }

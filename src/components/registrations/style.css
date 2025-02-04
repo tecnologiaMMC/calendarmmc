@@ -1,0 +1,24 @@
+#text_cierre .ql-snow .ql-editor h2 {
+    font-size: 1.25rem; /* Base size (equivale a text-xl) */
+  }
+  
+  @media (min-width: 640px) { /* sm */
+    #text_cierre .ql-snow .ql-editor h2 {
+      font-size: 1.5rem; /* equivale a text-2xl */
+    }
+  }
+  
+
+  
+  @media (min-width: 1024px) { /* lg */
+    #text_cierre .ql-snow .ql-editor h2 {
+      font-size: 1.875rem; /* equivale a text-4xl */
+    }
+  }
+  
+  @media (min-width: 1280px) { /* xl */
+    #text_cierre .ql-snow .ql-editor h2 {
+      font-size: 2rem; /* equivale a text-5xl */
+    }
+  }
+  

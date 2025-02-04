@@ -7,6 +7,7 @@ import {
    FaDrum,
    FaGift,
 } from "react-icons/fa6";
+import { GiTeacher } from "react-icons/gi";
 
 const getIconComponent = (cod_type_event: number) => {
    switch (cod_type_event) {
@@ -20,6 +21,8 @@ const getIconComponent = (cod_type_event: number) => {
          return FaDrum;
       case 6:
          return FaGift;
+      case 7:
+         return GiTeacher;
       default:
          return null; // Puedes retornar un ícono por defecto aquí si lo deseas
    }
@@ -41,6 +44,7 @@ export default function IconCard({
                "bg-coronation": cod_type_event === 3,
                "bg-s-mmc": cod_type_event === 4,
                "bg-sorteo": cod_type_event === 6,
+               "bg-charla": cod_type_event === 7,
             },
             "absolute top-[-25px] w-[50px] h-[50px]  rounded-full flex justify-center items-center ml-[10px] hidden sm:flex re-icon"
          )}
@@ -55,6 +59,7 @@ export default function IconCard({
                         "text-coronation": cod_type_event === 3,
                         "text-s-mmc": cod_type_event === 4,
                         "text-sorteo": cod_type_event === 6,
+                        "text-charla": cod_type_event === 7,
                      },
                      "w-[25px] h-[25px]"
                   )}

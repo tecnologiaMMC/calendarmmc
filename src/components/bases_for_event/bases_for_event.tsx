@@ -4,9 +4,10 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import "./bases.css";
 import AcordionProvitional from "./acordion-provitional";
 import { ModalitiesGarbo, ModalitiesLuis } from "./data-modalities";
+import "./bases.css";
+import AccordionCustomize from "./acordion-provitional";
 
 const BasesForEvent = ({
    modalities,
@@ -51,6 +52,18 @@ const BasesForEvent = ({
          toolbar: false,
       },
    });
+   const { quill: quill6, quillRef: quillRef6 } = useQuill({
+      readOnly: true,
+      modules: {
+         toolbar: false,
+      },
+   });
+   const { quill: quill7, quillRef: quillRef7 } = useQuill({
+      readOnly: true,
+      modules: {
+         toolbar: false,
+      },
+   });
    useEffect(() => {
       console.log(bases);
       if (quill1) {
@@ -68,17 +81,23 @@ const BasesForEvent = ({
       if (quill5) {
          quill5.setContents(bases.calificacion);
       }
+      if (quill6) {
+         quill6.setContents(bases.mod_restriciones);
+      }
+
    }, [
       quill1,
       quill2,
       quill3,
       quill4,
       quill5,
+      quill6,
       bases.intro,
       bases.marineras,
       bases.consideraciones,
       bases.desarrollo,
       bases.calificacion,
+      bases.mod_restriciones,
    ]);
 
    const nombreModalidad = (cod: number) => {
@@ -101,16 +120,11 @@ const BasesForEvent = ({
                <div ref={quillRef1}></div>
             </div>
          </section>
-         {event.Organizadores_cod_organizador === 7 && (
          <section className="w-[90%] md:w-[80%] flex flex-col">
-            <ModalitiesLuis/>
+            <AccordionCustomize title="Modalidades y retricciones">
+               <div ref={quillRef6}></div>
+            </AccordionCustomize>
          </section>
-         )}
-         {event.Organizadores_cod_organizador === 132 && (
-         <section className="w-[90%] md:w-[80%] flex flex-col">
-            <ModalitiesGarbo/>
-         </section>
-         )}
          <section className="w-[90%] md:w-[80%] flex flex-col">
             <Accordion>
                <AccordionSummary

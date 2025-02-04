@@ -6,6 +6,7 @@ export default function Home() {
    const router = useRouter();
 
    useEffect(()=>{
+      console.log('redirect')
        router.push('/calendario')
    },[])
 

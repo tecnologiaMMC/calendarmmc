@@ -92,6 +92,14 @@ const Details = ({ event }: { event: any }) => {
       window.open(url, "_blank");
    };
 
+   const isValidURL = (url: string): boolean => {
+      try {
+        new URL(url);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    };
    return (
       // <div className="w-full bg-white px-[5%] flex flex-col-reverse items-center lg:flex-row gap-10 lg:items-start">
       //    <article className="flex-1 w-full md:w-[60%] lg:w-full  bg-gray-200 flex flex-col items-center py-[1.5%]   gap-[20px] rounded-[16px]">
@@ -241,9 +249,9 @@ const Details = ({ event }: { event: any }) => {
                <div className=" flex items-center h-[30px]">
                   <FaRegCircleCheck className="text-green-600 mt-[2px]" />
                   <p className="leading-[1] text-p-mmc ml-[15px] ">
-                     Organización
+                     Organización:
                   </p>
-                  <p className="leading-[1] ml-[15px] text-gray-800  w-[65%] truncate">
+                  <p className="leading-[1] ml-[15px] text-gray-800 w-[170px] truncate">
                      {event?.nombre_org ? event.nombre_org : "Cargando...."}
                   </p>
                </div>
@@ -283,7 +291,7 @@ const Details = ({ event }: { event: any }) => {
                <div className=" flex items-center h-[30px]">
                   <FaRegCircleCheck className="text-green-600 mt-[2px]" />
                   <p className="leading-[1] text-p-mmc ml-[15px] ">
-                     Coliseo o institución
+                     Coliseo o institución:
                   </p>
                   {event ? (
                      <p className="leading-[1] ml-[15px] text-gray-800">
@@ -303,9 +311,13 @@ const Details = ({ event }: { event: any }) => {
                   </p>
                   <p
                      className="leading-[1] ml-[15px] cursor-pointer text-s-mmc"
-                     onClick={() => window.open(event.linkMaps, "_blank")}
+                     onClick={() => {
+                        if (event.linkMaps && isValidURL(event.linkMaps)) {
+                          window.open(event.linkMaps, "_blank");
+                        }
+                      }}
                   >
-                     Google maps
+                     {event.linkMaps && isValidURL(event.linkMaps) ? "Google maps" : "Pendiente"}
                   </p>
                </div>
                <hr className="border-[1] border-gray-300 " />

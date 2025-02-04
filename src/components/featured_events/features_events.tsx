@@ -21,8 +21,8 @@ const FeaturesEvents: React.FC<EventListProps> = ({ events }) => {
          <div className="flex items-center justify-start w-[90%]">
             {/* <i className="fa-solid fa-star text-[22px] md:text-[30px] text-s-mmc mt-[3.5px] sm:mt-[6px] mr-[5px] "></i> */}
             <FaStar className="w-[22px] h-[22px] md:w-[35px] md:h-[35px] text-s-mmc mt-[3.5px] sm:mt-[6px] mr-[5px] " />{" "}
-            <h2 className="text-[27px] md:text-[40px] text-p-mmc">
-               <b className="leading-[1]">Eventos destacados</b>
+            <h2 className="text-[27px] md:text-[38px] text-p-mmc leading-[1]">
+            Eventos destacados
             </h2>
          </div>
 
@@ -30,44 +30,7 @@ const FeaturesEvents: React.FC<EventListProps> = ({ events }) => {
             {events &&
                events.map((e, index) => <CardEvent key={index} event={e} />)}
 
-            {/* <section
-               className="w-full   rounded overflow-hidden relative customH"
-               onClick={whats}
-            >
-               <img
-                  className="w-full h-full object-cover desktop-"
-                  src={desktop.src}
-                  alt=""
-               />
-               <img
-                  className="w-full h-full object-cover movil-"
-                  src={movil.src}
-                  alt=""
-               />
 
-               <div className="w-full top-0 absolute items-start flex flex-col  h-full justify-evenly cursor-pointer">
-                  <h2 className="custom-text-outline text-start">
-                     Tu concurso, <br />
-                     ensayo con banda <br />u otro, con mucho más <br />
-                     visibilidad <br />
-                     AQUÍ en EVENTOS <br />
-                     Destacados{" "}
-                  </h2>
-                  <div className="publi-textos">
-                     <p className="text-outline text-start">
-                        • Más de 3000 visitas mensuales
-                     </p>
-                     <p className="text-outline text-start">
-                        • Más de 300 eventos en el Perú
-                     </p>
-                  </div>
-                  <div className="conten-button self-center">
-                     <p className="rounded-xl boton-publicidad">
-                        Quiero mi evento Aquí
-                     </p>
-                  </div>
-               </div>
-            </section> */}
             <section
                className="w-full  rounded overflow-hidden relative min-h-[290px]"
                onClick={whats}

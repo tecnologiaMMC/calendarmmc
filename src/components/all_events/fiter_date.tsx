@@ -5,12 +5,8 @@ import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import React, { Dispatch, SetStateAction, ChangeEvent } from "react";
 import { DatesFiltro } from "@/libs/types";
-import { Sansita } from "next/font/google";
 import { useTheme } from '@mui/material/styles';
-const sansita = Sansita({
-   weight: ["400", "700", "800", "900"],
-   subsets: ["latin-ext"],
-});
+
 
 import {
    eventsMonth,
@@ -102,7 +98,7 @@ const BasicPopover: React.FC<FilterDatesProps> = ({
                "&:hover": {
                   backgroundColor: "white",
                },
-               fontFamily: sansita.style.fontFamily,
+               // fontFamily: sansita.style.fontFamily,
                [theme.breakpoints.down(640)]: {
                   display: 'flex',
                   justifyContent: 'flex-start',
